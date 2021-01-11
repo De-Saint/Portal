@@ -1,0 +1,458 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Warrants</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a routerLink="/dashboard/main">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Warrants</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="">
+                    <div class="col-md-12 mt-5" style="text-align: center;">
+                        <h5>You can use your cash to buy market warrants. There are a number of options for this.</h5>
+                        <p> Choose the option you want to use.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix  mt-5">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card" style="text-align: center; cursor: pointer;">
+                    <div class="col-md-12 p-t-45 p-b-30 bg-amber" data-toggle="modal" data-target=".buyWarrant">
+                        <p class="font-bold font-18">BUY WARRANT AT PAR?</p>
+                        <p>(choose this option if you want to buy warrants at par so that you will be able to cash
+                            them
+                            back at par in the future.)</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal for Warrant -->
+            <div class="modal fade buyWarrant" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="mt-3 mb-3 ml-3" id="myLargeModalLabel">Buy Warrant at Par
+                            </h5>
+                            <button id="closeEditPermModal" type="button" class="close mt-2 mb-3 mr-2"
+                                data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="button-demo m-b-0">
+                                <button type="button"
+                                    class="btn btn-outline-info pull-right btn-sm pull-right mb-0 mr-3 mt-3">Add
+                                    New Card</button>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                                <mat-step [stepControl]="firstBuyWarrantForm">
+                                    <form [formGroup]="firstBuyWarrantForm">
+                                        <ng-template matStepLabel>Buy Warrant with Cash</ng-template>
+                                        <mat-form-field class="example-full-width" appearance="outline">
+                                            <mat-label>How much in warrant do you want to Buy at Par</mat-label>
+                                            <input matInput formControlName="buyPar" required>
+                                            <mat-icon matSuffix>account_balance_wallet</mat-icon>
+                                        </mat-form-field>
+                                        <div>
+                                            <button mat-raised-button matStepperNext color="primary">Next</button>
+                                        </div>
+                                    </form>
+                                </mat-step>
+                                <mat-step [stepControl]="secondBuyWarrantForm">
+                                    <form [formGroup]="secondBuyWarrantForm">
+                                        <ng-template matStepLabel>Payment Option</ng-template>
+                                        <div class="row">
+                                            <div class="col-6 d-flex mb-4">
+                                                <h6 class="mt-1 mr-3 font-bold">Pay With Debit/Credit Card</h6>
+                                                <mat-slide-toggle formControlName="debitCard"></mat-slide-toggle>
+                                            </div>
+                                            <div class="col-6 d-flex mb-4">
+                                                <h6 class="mt-1 mr-3 font-bold">Pay with your Bank App</h6>
+                                                <mat-slide-toggle [color]="color" formControlName="bankApp">
+                                                </mat-slide-toggle>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button mat-raised-button matStepperPrevious color="warn"
+                                                class="mr-2">Back</button>
+                                            <button mat-raised-button matStepperNext color="primary">Next</button>
+                                        </div>
+                                    </form>
+                                </mat-step>
+                                <mat-step>
+                                    <form [formGroup]="thirdBuyWarrantForm">
+                                        <ng-template matStepLabel>Pay With Card</ng-template>
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Select Card</mat-label>
+                                                    <mat-select formControlName="selCard">
+                                                        <mat-option [value]="'Gtb 2392 2312 1213 3232'">
+                                                            Gtb 2392 2312 1213 3232
+                                                        </mat-option>
+                                                        <mat-option [value]="'Zenith 2423 7884 9832 8712'">
+                                                            Zenith 2423 7884 9832 8712
+                                                        </mat-option>
+                                                    </mat-select>
+                                                    <mat-icon matSuffix>account_balance</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Enter CVV</mat-label>
+                                                    <input matInput formControlName="cvv" />
+                                                    <mat-icon matSuffix>credit_card</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Amount</mat-label>
+                                                    <input matInput formControlName="amount" />
+                                                    <mat-icon matSuffix>account_balance_wallet</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button mat-raised-button matStepperPrevious color="warn"
+                                                class="mr-2">Back</button>
+                                            <button mat-raised-button color="primary" (click)="stepper.reset()"
+                                                class="mr-2 ">Reset</button>
+                                            <button mat-raised-button color="success" class="bg-green">Buy Warrant at
+                                                Par</button>
+                                        </div>
+                                    </form>
+                                </mat-step>
+                            </mat-horizontal-stepper>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal for Warrant -->
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card" style="text-align: center; cursor: pointer;">
+                    <div class="col-md-12 p-t-45 p-b-30 bg-teal" data-toggle="modal" data-target=".monetizationRight">
+                        <p class="font-bold font-18">USE MONETISATION RIGHTS?</p>
+                        <p>(choose this option if you to use your money to buy MRs offered for sale by holders. With
+                            this option, you may get double of the value of your money in market warrants.)
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal for Monetization right -->
+            <div class="modal fade monetizationRight" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="mt-3 mb-3 ml-3" id="myLargeModalLabel">Use Monetisation Right
+                            </h5>
+                            <button id="closeEditPermModal" type="button" class="close mt-2 mb-3 mr-2"
+                                data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="button-demo m-b-0">
+                                <button type="button"
+                                    class="btn btn-outline-info pull-right btn-sm pull-right mb-0 mr-3 mt-3">Add
+                                    New Card</button>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                                <mat-step [stepControl]="firstReflationRightForm">
+                                    <form [formGroup]="firstReflationRightForm">
+                                        <ng-template matStepLabel>Buy Warrant with Cash</ng-template>
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Reflation Profile</mat-label>
+                                                    <mat-select formControlName="reflationProfile">
+                                                        <mat-option [value]="'Gtb 2392 2312 1213 3232'">
+                                                            200/13
+                                                        </mat-option>
+                                                        <mat-option [value]="'Zenith 2423 7884 9832 8712'">
+                                                            234/265
+                                                        </mat-option>
+                                                    </mat-select>
+                                                    <mat-icon matSuffix>account_balance</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <div class="d-flex mt-4">
+                                                    <p class="mb-0 mr-3">Your Reflation Rights Balance is</p>
+                                                    <p class="font-bold" formControlName="refBalance"> 2,745</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>How Much in Warrants do you want to buy in Cash
+                                                    </mat-label>
+                                                    <input matInput formControlName="muchBuy" />
+                                                    <mat-icon matSuffix>credit_card</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Cash Required</mat-label>
+                                                    <input matInput formControlName="cashRequired" />
+                                                    <mat-icon matSuffix>account_balance_wallet</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button mat-raised-button matStepperNext color="primary">Next</button>
+                                        </div>
+                                    </form>
+                                </mat-step>
+                                <mat-step [stepControl]="secondReflationRightForm">
+                                    <form [formGroup]="secondReflationRightForm">
+                                        <ng-template matStepLabel>Payment Option</ng-template>
+                                        <div class="row">
+                                            <div class="col-6 d-flex mb-4">
+                                                <h6 class="mt-1 mr-3 font-bold">Use a Debit/Credit Card</h6>
+                                                <mat-slide-toggle formControlName="debitCard"></mat-slide-toggle>
+                                            </div>
+                                            <div class="col-6 d-flex mb-4">
+                                                <h6 class="mt-1 mr-3 font-bold">Use your Bank App</h6>
+                                                <mat-slide-toggle [color]="color" formControlName="bankApp">
+                                                </mat-slide-toggle>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button mat-raised-button matStepperPrevious color="warn"
+                                                class="mr-2">Back</button>
+                                            <button mat-raised-button matStepperNext color="primary">Next</button>
+                                        </div>
+                                    </form>
+                                </mat-step>
+                                <mat-step>
+                                    <form [formGroup]="thirdReflationRightForm">
+                                        <ng-template matStepLabel>Pay With Card</ng-template>
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Select Card</mat-label>
+                                                    <mat-select formControlName="selCard">
+                                                        <mat-option [value]="'Gtb 2392 2312 1213 3232'">
+                                                            Gtb 2392 2312 1213 3232
+                                                        </mat-option>
+                                                        <mat-option [value]="'Zenith 2423 7884 9832 8712'">
+                                                            Zenith 2423 7884 9832 8712
+                                                        </mat-option>
+                                                    </mat-select>
+                                                    <mat-icon matSuffix>account_balance</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Enter CVV</mat-label>
+                                                    <input matInput formControlName="cvv" />
+                                                    <mat-icon matSuffix>credit_card</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Amount</mat-label>
+                                                    <input matInput formControlName="amount" />
+                                                    <mat-icon matSuffix>account_balance_wallet</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button mat-raised-button matStepperPrevious color="warn"
+                                                class="mr-2">Back</button>
+                                            <button mat-raised-button color="primary" (click)="stepper.reset()"
+                                                class="mr-2 ">Reset</button>
+                                            <button mat-raised-button color="success" class="bg-green">Buy Warrant with
+                                                Reflation Right</button>
+                                        </div>
+                                    </form>
+                                </mat-step>
+                            </mat-horizontal-stepper>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal for Monetization right -->
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card" style="text-align: center; cursor: pointer;">
+                    <div class="col-md-12 p-t-45 p-b-30 bg-cyan" data-toggle="modal" data-target=".reflationRight">
+                        <p class="font-bold font-18">USE REFLATION RIGHTS?</p>
+                        <p>(choose this option if you have reflation rights with which you can buy warrants at a
+                            discount.)</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal for Reflation right -->
+            <div class="modal fade reflationRight" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="mt-3 mb-3 ml-3" id="myLargeModalLabel">Use Reflation Right
+                            </h5>
+                            <button id="closeEditPermModal" type="button" class="close mt-2 mb-3 mr-2"
+                                data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="button-demo m-b-0">
+                                <button type="button"
+                                    class="btn btn-outline-info pull-right btn-sm pull-right mb-0 mr-3 mt-3">Add
+                                    New Card</button>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                                <mat-step [stepControl]="firstReflationRightForm">
+                                    <form [formGroup]="firstReflationRightForm">
+                                        <ng-template matStepLabel>Buy Warrant with Cash</ng-template>
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Reflation Profile</mat-label>
+                                                    <mat-select formControlName="reflationProfile">
+                                                        <mat-option [value]="'Gtb 2392 2312 1213 3232'">
+                                                            200/13
+                                                        </mat-option>
+                                                        <mat-option [value]="'Zenith 2423 7884 9832 8712'">
+                                                            234/265
+                                                        </mat-option>
+                                                    </mat-select>
+                                                    <mat-icon matSuffix>account_balance</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <div class="d-flex mt-4">
+                                                    <p class="mb-0 mr-3">Your Reflation Rights Balance is</p>
+                                                    <p class="font-bold" formControlName="refBalance"> 2,745</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>How Much in Warrants do you want to buy in Cash
+                                                    </mat-label>
+                                                    <input matInput formControlName="muchBuy" />
+                                                    <mat-icon matSuffix>credit_card</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Cash Required</mat-label>
+                                                    <input matInput formControlName="cashRequired" />
+                                                    <mat-icon matSuffix>account_balance_wallet</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button mat-raised-button matStepperNext color="primary">Next</button>
+                                        </div>
+                                    </form>
+                                </mat-step>
+                                <mat-step [stepControl]="secondReflationRightForm">
+                                    <form [formGroup]="secondReflationRightForm">
+                                        <ng-template matStepLabel>Payment Option</ng-template>
+                                        <div class="row">
+                                            <div class="col-6 d-flex mb-4">
+                                                <h6 class="mt-1 mr-3 font-bold">Use a Debit/Credit Card</h6>
+                                                <mat-slide-toggle formControlName="debitCard"></mat-slide-toggle>
+                                            </div>
+                                            <div class="col-6 d-flex mb-4">
+                                                <h6 class="mt-1 mr-3 font-bold">Use your Bank App</h6>
+                                                <mat-slide-toggle [color]="color" formControlName="bankApp">
+                                                </mat-slide-toggle>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button mat-raised-button matStepperPrevious color="warn"
+                                                class="mr-2">Back</button>
+                                            <button mat-raised-button matStepperNext color="primary">Next</button>
+                                        </div>
+                                    </form>
+                                </mat-step>
+                                <mat-step>
+                                    <form [formGroup]="thirdReflationRightForm">
+                                        <ng-template matStepLabel>Pay With Card</ng-template>
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Select Card</mat-label>
+                                                    <mat-select formControlName="selCard">
+                                                        <mat-option [value]="'Gtb 2392 2312 1213 3232'">
+                                                            Gtb 2392 2312 1213 3232
+                                                        </mat-option>
+                                                        <mat-option [value]="'Zenith 2423 7884 9832 8712'">
+                                                            Zenith 2423 7884 9832 8712
+                                                        </mat-option>
+                                                    </mat-select>
+                                                    <mat-icon matSuffix>account_balance</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Enter CVV</mat-label>
+                                                    <input matInput formControlName="cvv" />
+                                                    <mat-icon matSuffix>credit_card</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Amount</mat-label>
+                                                    <input matInput formControlName="amount" />
+                                                    <mat-icon matSuffix>account_balance_wallet</mat-icon>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button mat-raised-button matStepperPrevious color="warn"
+                                                class="mr-2">Back</button>
+                                            <button mat-raised-button color="primary" (click)="stepper.reset()"
+                                                class="mr-2 ">Reset</button>
+                                            <button mat-raised-button color="success" class="bg-green">Buy Warrant with
+                                                Reflation Right</button>
+                                        </div>
+                                    </form>
+                                </mat-step>
+                            </mat-horizontal-stepper>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal for Rflation right -->
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card" style="text-align: center; cursor: pointer;">
+                    <div class="col-md-12 p-t-45 p-b-30 bg-lime" data-toggle="modal" data-target="">
+                        <p class="font-bold font-18">USE MONETISATION RIGHTS?</p>
+                        <p>(choose this option if you want to avail of your monetisation rights.)</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+
+
+    </div>
+</section>

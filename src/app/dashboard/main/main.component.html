@@ -1,0 +1,208 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Dashboard</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/dashboard/main">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-4">
+        <div class="d-flex">
+          <div class="col-md-6">
+            <div class=" mt-3">
+              <p class="font-18 mb-0"><b>Hi {{ userData?.user.first_name }} {{ userData?.user.last_name }},</b> Welcome
+                back</p><span style="color: #5b626b;">Overview</span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="button-demo mt-3 mb-2 pull-right font-18" id="txt" style="color: #5b626b;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Widgets -->
+    <div class="row ">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="card">
+          <div class="card-statistic-4 bg-teal">
+            <div class="align-items-center justify-content-between">
+              <div class="row ">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 pr-0 pt-3">
+                  <div class="card-content">
+                    <h5 class="font-15">Total Number of Organization Created/Belong to</h5>
+                    <h2 class="mb-3 font-18">{{ totalOrganizations ? totalOrganizations : 0 }}</h2>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pl-0">
+                  <div class="banner-img">
+                    <img src="assets/images/banner/1.png" alt="" style="height: 100px; width: 100px">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="card">
+          <div class="card-statistic-4 bg-orange">
+            <div class="align-items-center justify-content-between">
+              <div class="row ">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                  <div class="card-content">
+                    <h5 class="font-15">Total Number of Dependant Created</h5>
+                    <h2 class="mb-3 font-18">{{ totalDependants ? totalDependants : 0 }}</h2>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                  <div class="banner-img">
+                    <img src="assets/images/banner/1.png" alt="" style="height: 100px; width: 100px">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="card">
+          <div class="card-statistic-4">
+            <div class="align-items-center justify-content-between">
+              <div class="row ">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                  <div class="card-content">
+                    <h5 class="font-15"> Total Courses</h5>
+                    <h2 class="mb-3 font-18">47</h2>
+                    <p class="mb-0"><span class="col-orange">09%</span> Decrease</p>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                  <div class="banner-img">
+                    <img src="assets/images/banner/2.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="card">
+          <div class="card-statistic-4">
+            <div class="align-items-center justify-content-between">
+              <div class="row ">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                  <div class="card-content">
+                    <h5 class="font-15">Awards</h5>
+                    <h2 class="mb-3 font-18">128</h2>
+                    <p class="mb-0"><span class="col-green">18%</span>
+                      Increase</p>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                  <div class="banner-img">
+                    <img src="assets/images/banner/3.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="card">
+          <div class="card-statistic-4">
+            <div class="align-items-center justify-content-between">
+              <div class="row ">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
+                  <div class="card-content">
+                    <h5 class="font-15">Revenue</h5>
+                    <h2 class="mb-3 font-18">$48,697</h2>
+                    <p class="mb-0"><span class="col-green">42%</span> Increase</p>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
+                  <div class="banner-img">
+                    <img src="assets/images/banner/4.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <!-- #END# Widgets -->
+
+    <div class="row">
+      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2>User Information</h2>
+          </div>
+          <div class="body">
+            <div class="m-b-20">
+              <div class="contact-grid">
+                <div class="profile-header bg-dark">
+                  <div class="user-name pt-3" style="font-size: 20px;">{{ userData?.user.first_name }}
+                    {{ userData?.user.last_name }}</div>
+                  <div class="name-center">{{ userData?.user.username }}</div>
+                </div>
+                <img src="assets/images/user/usrbig3.jpg" class="user-img" alt="">
+                <p>
+                  01, Wale Balogun close Sangotedo
+                  <br />Lagos State.
+                </p>
+                <div class="row text-center">
+                  <div class="col-4">
+                    <h6>DOB</h6>
+                    <small>{{ userData?.user.dob }}</small>
+                  </div>
+                  <div class="col-4">
+                    <h6>Date Joined</h6>
+                    <small>{{ userData?.user.reg_date | date }}</small>
+                  </div>
+                  <div class="col-4">
+                    <h6>Gender</h6>
+                    <small>{{ userData?.user.gender }}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2>
+              History of Activities</h2>
+          </div>
+          <div id="chart">
+            <apx-chart [series]="areaChartOptions.series" [chart]="areaChartOptions.chart"
+              [xaxis]="areaChartOptions.xaxis" [yaxis]="areaChartOptions.yaxis" [colors]="areaChartOptions.colors"
+              [stroke]="areaChartOptions.stroke" [legend]="areaChartOptions.legend" [tooltip]="areaChartOptions.tooltip"
+              [dataLabels]="areaChartOptions.dataLabels"></apx-chart>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

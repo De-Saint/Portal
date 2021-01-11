@@ -1,0 +1,63 @@
+<div class="limiter">
+  <div class="container-login100">
+    <form class="login100-form2 validate-form" [formGroup]="valForm" (ngSubmit)="onSubmit()">
+      <div class="login100-form-title">
+        <!-- Error alert !-->
+        <div class="col-lg-12 col-md-12">
+          <div class="message-alert d-none" style="font-size: 15px;"></div>
+        </div>
+        <!-- End Error alert !-->
+        <img src="assets/images/logo1.png" alt="" class="mb-4" style="width: 60px; height: 60px;" />
+        <h4 class="mb-3" style="font-size: 18px !important;">Enter Validation Code</h4>
+      </div>
+      <div class="form-group mb-3">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Enter your code</mat-label>
+              <input matInput formControlName="code" required>
+              <mat-icon matSuffix>vpn_key</mat-icon>
+              <mat-error *ngIf="valForm.get('code').hasError('required')">
+                Code is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Enter New Password</mat-label>
+              <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required>
+              <mat-icon matSuffix (click)="hide = !hide">
+                {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="valForm.get('password').hasError('required')">
+                Password is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Confirm New Password</mat-label>
+              <input matInput formControlName="cpassword" [type]="hide ? 'password' : 'text'" required>
+              <mat-icon matSuffix (click)="hide = !hide">
+                {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="valForm.get('cpassword').hasError('required')">
+                Password is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="container-login100-form-btn" style="display: block !important;">
+        <button mat-flat-button color="primary" class="login100-form-btn" type="submit">
+            Submit
+          </button>
+      </div>
+      <!-- <div class="w-full p-t-25 text-center">
+          <div>
+            <a routerLink="/authentication/signin" class="txt1">
+              Login
+            </a>
+          </div>
+        </div> -->
+    </form>
+  </div>
+</div>

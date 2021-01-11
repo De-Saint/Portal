@@ -1,0 +1,106 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Organizations</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a routerLink="/dashboard/main">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Organizations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="d-flex">
+                        <div class="col-md-6">
+                            <div class="ml-1 m-t-25 m-b-25">
+                                <h5>Organizations</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 mx-auto">
+                        <circle-progress *ngIf="showSpinner" [percent]="100" [radius]="100" [outerStrokeWidth]="16"
+                            [innerStrokeWidth]="8" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'"
+                            [animation]="true" [animationDuration]="18000"></circle-progress>
+                    </div>
+
+                    <div class="tableBody">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Filter with Name</mat-label>
+                                    <input matInput [(ngModel)]="sortingName" (input)="SearchByName()"
+                                        placeholder="Filter with Name">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Filter with Email</mat-label>
+                                    <input matInput [(ngModel)]="sortingEmail" (input)="SearchByEmail()"
+                                        placeholder="Filter with Name">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive" *ngIf="show">
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone Number</th>
+                                        <th>Group Type</th>
+                                        <th>Role</th>
+                                        <th>Registration Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let list of allOrganizationList; let i = index">
+                                        <td>{{ list.organization.name }}</td>
+                                        <td>{{ list.organization.email }}</td>
+                                        <td>{{ list.organization.phone }}</td>
+                                        <td>{{ list.grouptypename.name }}</td>
+                                        <td>{{ list.role.name }}</td>
+                                        <td>{{ list.organization.created_date | date }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-responsive" *ngIf="!show">
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone Number</th>
+                                        <th>Agency</th>
+                                        <th>Registration Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <td colspan="7" class="text-center bg-teal text-white">
+                                    {{errorResp}}
+                                  </td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

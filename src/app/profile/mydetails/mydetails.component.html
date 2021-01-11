@@ -1,0 +1,637 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Profile</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a routerLink="/dashboard/main">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Profile</a>
+                        </li>
+                        <li class="breadcrumb-item active">Profiles</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 mx-auto">
+            <circle-progress *ngIf="showSpinner" [percent]="100" [radius]="100" [outerStrokeWidth]="16"
+            [innerStrokeWidth]="8" [outerStrokeColor]="'#78C000'" [innerStrokeColor]="'#C7E596'"
+            [animation]="true" [animationDuration]="18000"></circle-progress>
+        </div>
+
+        <!-- Your content goes here  -->
+        <div class="row clearfix">
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="m-b-20">
+                        <div class="contact-grid">
+                            <div class="profile-header bg-dark">
+                                <div class="user-name pt-3" style="font-size: 20px;">{{ userData?.user.first_name }}
+                                    {{ userData?.user.last_name }}</div>
+                                <div class="name-center">{{ userData?.user.username }}</div>
+                            </div>
+                            <img src="assets/images/user/usrbig3.jpg" class="user-img" alt="">
+                            <p>
+                                01, Wale Balogun close Sangotedo
+                                <br />Lagos State.
+                            </p>
+                            <div class="row text-center">
+                                <div class="col-4">
+                                    <h6>DOB</h6>
+                                    <small>{{ userData?.user.dob }}</small>
+                                </div>
+                                <div class="col-4">
+                                    <h6>Date Joined</h6>
+                                    <small>{{ userData?.user.reg_date | date }}</small>
+                                </div>
+                                <div class="col-4">
+                                    <h6>Gender</h6>
+                                    <small>{{ userData?.user.gender }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="header">
+                        <h2>Navigaton</h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="#" onClick="return false;" data-toggle="dropdown" role="button"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-md-12 mb-2">
+                                <div class="pull-left d-flex">
+                                    <div class=""><i class="fa fa-inbox m-r-20"></i></div>
+                                    <div class="">
+                                        <p class="">Inbox</p>
+                                    </div>
+                                </div>
+                                <div class="pull-right"><span class="badge bg-pink py-1">255</span></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-2">
+                                <div class="pull-left d-flex">
+                                    <div class=""><i class="fa fa-money-check-alt m-r-20"></i></div>
+                                    <div class="">
+                                        <p class="">Accounts</p>
+                                    </div>
+                                </div>
+                                <div class="pull-right"><span class="badge bg-teal py-1">5</span></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-2">
+                                <div class="pull-left d-flex">
+                                    <div class=""><i class="fa fa-project-diagram m-r-20"></i></div>
+                                    <div class="">
+                                        <p class="">Products</p>
+                                    </div>
+                                </div>
+                                <div class="pull-right"><span class="badge bg-cyan py-1">45</span></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-2">
+                                <div class="pull-left d-flex">
+                                    <div class=""><i class="fa fa-server m-r-20"></i></div>
+                                    <div class="">
+                                        <p class="">Services</p>
+                                    </div>
+                                </div>
+                                <div class="pull-right"><span class="badge bg-orange py-1">12</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="profile-tab-box">
+                        <div class="p-l-20">
+                            <ul class="nav ">
+                                <li class="nav-item tab-all">
+                                    <a class="nav-link active show" href="#detail" data-toggle="tab">Details</a>
+                                </li>
+                                <!-- <li class="nav-item tab-all p-l-20">
+                                    <a class="nav-link" href="#bankdetails" data-toggle="tab">Bank Details</a>
+                                </li> -->
+                                <li class="nav-item tab-all p-l-20">
+                                    <a class="nav-link" href="#setting" data-toggle="tab">Settings</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="detail" aria-expanded="true">
+                        <div class="row clearfix">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="header bg-cyan d-flex">
+                                        <div class=""><i class="fa fa-money-check-alt m-r-15"></i></div>
+                                        <h2>Accounts</h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2">
+                                                <div class="pull-left d-flex">
+                                                    <div class=""><i class="fa fa-envelope m-r-20"></i></div>
+                                                    <div class="">
+                                                        <p class="">{{ userData?.user.email }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="pull-right"><span class="badge bg-cyan py-1">Email</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2">
+                                                <div class="pull-left d-flex">
+                                                    <div class=""><i class="fa fa-phone m-r-20"></i></div>
+                                                    <div class="">
+                                                        <p class="">{{ userData?.user.phone_number }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="pull-right"><span class="badge bg-cyan py-1">phone</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="header bg-teal d-flex">
+                                        <div class=""><i class="fa fa-folder-open m-r-15"></i></div>
+                                        <h2>Others</h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2">
+                                                <div class="pull-left d-flex">
+                                                    <div class=""><i class="fa fa-toggle-on m-r-20"></i></div>
+                                                    <div class="">
+                                                        <p class=""> {{ userData?.status.name }} </p>
+                                                    </div>
+                                                </div>
+                                                <div class="pull-right"><span class="badge py-1">Status</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2">
+                                                <div class="pull-left d-flex">
+                                                    <div class=""><i class="fa fa-user-friends m-r-20"></i></div>
+                                                    <div class="">
+                                                        <p class=""> {{ userData?.membertype.name }} </p>
+                                                    </div>
+                                                </div>
+                                                <div class="pull-right"><span class="badge py-1">member type</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="header bg-pink d-flex">
+                                        <div class=""><i class="fa fa-unlock-alt m-r-15"></i></div>
+                                        <h2>WealthMarket Unique ID</h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2">
+                                                <div class="pull-left d-flex">
+                                                    <div class=""><i class="fa fa-unlock-alt m-r-20"></i></div>
+                                                    <div class="">
+                                                        <p class="">{{ userData?.user.unique_id }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="pull-right"><span class="badge bg-pink py-1">WM-Unique
+                                                        ID</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div role="tabpanel" class="tab-pane" id="bankdetails" aria-expanded="false">
+
+                        <div class="row clearfix">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+                                    <div class="col-md-12">
+                                        <button mat-raised-button type="button" class="btn btn-primary pull-right ml-3"
+                                            data-toggle="modal" data-target=".bd-example-modal-lg">Edit Bank
+                                            Details</button>
+
+
+                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                                            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="mt-3 mb-3 ml-3" id="myLargeModalLabel">Edit Bank
+                                                            Details
+                                                        </h5>
+                                                        <button type="button" class="close mt-2 mb-3 mr-2"
+                                                            data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="" [formGroup]="profForm">
+                                                            <div class="row">
+                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                                    <mat-form-field class="example-full-width"
+                                                                        appearance="outline">
+                                                                        <mat-label>Bank Name</mat-label>
+                                                                        <input matInput formControlName="editaccount" />
+                                                                        <mat-icon matSuffix>done_all</mat-icon>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                                    <mat-form-field class="example-full-width"
+                                                                        appearance="outline">
+                                                                        <mat-label>Account Number</mat-label>
+                                                                        <input matInput formControlName="editaccount" />
+                                                                        <mat-icon matSuffix>done_all</mat-icon>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                                    <mat-form-field class="example-full-width"
+                                                                        appearance="outline">
+                                                                        <mat-label>Account Type</mat-label>
+                                                                        <input matInput formControlName="editaccount" />
+                                                                        <mat-icon matSuffix>done_all</mat-icon>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                            </div>
+                                                            <button mat-flat-button color="primary"
+                                                                class="login100-form-btn" type="submit">
+                                                                Submit
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <button mat-raised-button type="button" class="btn btn-success pull-right"
+                                            data-toggle="modal" data-target="#exampleModal">Add
+                                            Bank
+                                            Details</button>
+
+
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                            aria-labelledby="formModal" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="mt-3 mb-3 ml-3" id="myLargeModalLabel">Add Bank
+                                                            Details
+                                                        </h5>
+                                                        <button type="button" class="close mt-2 mb-3 mr-2"
+                                                            data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="" [formGroup]="profForm">
+                                                            <div class="row">
+                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                                    <mat-form-field class="example-full-width"
+                                                                        appearance="outline">
+                                                                        <mat-label>Bank Name</mat-label>
+                                                                        <input matInput formControlName="addaccount" />
+                                                                        <mat-icon matSuffix>done_all</mat-icon>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                                    <mat-form-field class="example-full-width"
+                                                                        appearance="outline">
+                                                                        <mat-label>Account Number</mat-label>
+                                                                        <input matInput formControlName="addaccount" />
+                                                                        <mat-icon matSuffix>done_all</mat-icon>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                                    <mat-form-field class="example-full-width"
+                                                                        appearance="outline">
+                                                                        <mat-label>Account Type</mat-label>
+                                                                        <input matInput formControlName="addaccount" />
+                                                                        <mat-icon matSuffix>done_all</mat-icon>
+                                                                    </mat-form-field>
+                                                                </div>
+                                                            </div>
+                                                            <button mat-flat-button color="primary"
+                                                                class="login100-form-btn" type="submit">
+                                                                Submit
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="header bg-cyan d-flex">
+                                        <div class=""><i class="fa fa-user-alt m-r-15"></i></div>
+                                        <h2>Names</h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2">
+                                                <div class="pull-left d-flex">
+                                                    <div class=""><i class="fa fa-money-check m-r-20"></i></div>
+                                                    <div class="">
+                                                        <p class="">Guaranty Trust Bank</p>
+                                                    </div>
+                                                </div>
+                                                <div class="pull-right"><span class="badge bg-cyan py-1">Bank
+                                                        Name</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2">
+                                                <div class="pull-left d-flex">
+                                                    <div class=""><i class="fa fa-donate m-r-20"></i></div>
+                                                    <div class="">
+                                                        <p class="">03302204576</p>
+                                                    </div>
+                                                </div>
+                                                <div class="pull-right"><span class="badge bg-cyan py-1">Account
+                                                        Number</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div class="card">
+                                    <div class="header bg-orange d-flex">
+                                        <div class=""><i class="fa fa-folder-open m-r-15"></i></div>
+                                        <h2>Accounts</h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2">
+                                                <div class="pull-left d-flex">
+                                                    <div class=""><i class="fa fa-wallet m-r-20"></i></div>
+                                                    <div class="">
+                                                        <p class="">Savings</p>
+                                                    </div>
+                                                </div>
+                                                <div class="pull-right"><span class="badge bg-orange py-1">Account
+                                                        Type</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mb-2">
+                                                <div class="pull-left d-flex">
+                                                    <div class=""><i class="fa fa-sort-numeric-up m-r-20"></i></div>
+                                                    <div class="">
+                                                        <p class="">3476386237823</p>
+                                                    </div>
+                                                </div>
+                                                <div class="pull-right"><span class="badge bg-orange py-1">BVN</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+                    <div role="tabpanel" class="tab-pane" id="setting" aria-expanded="false">
+                        <!-- Error alert !-->
+                        <div class="col-lg-12 col-md-12">
+                          <div class="message-alert d-none" style="font-size: 15px;"></div>
+                      </div>
+                      <!-- End Error alert !-->
+                        <div class="row clearfix">
+
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="card project_widget">
+                                    <div class="header mt-2 pb-0">
+                                        <h6>Change First & Last Name</h6>
+                                    </div>
+                                    <div class="body">
+                                        <form class="" #updateForm="ngForm"
+                                            (ngSubmit)="(updateForm.valid && onSubmit(updateForm))">
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                    <mat-form-field class="example-full-width" appearance="outline">
+                                                        <mat-label>Enter New First Name</mat-label>
+                                                        <input matInput name="first_name" #first_name="ngModel"
+                                                            type="text"
+                                                            [(ngModel)]="profileService.selectedUser.first_name"
+                                                            required>
+                                                        <mat-icon matSuffix>account_circle</mat-icon>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                    <mat-form-field class="example-full-width" appearance="outline">
+                                                        <mat-label>Enter New Last Name</mat-label>
+                                                        <input matInput name="last_name" #last_name="ngModel"
+                                                            type="text"
+                                                            [(ngModel)]="profileService.selectedUser.last_name"
+                                                            required>
+                                                        <mat-icon matSuffix>account_circle</mat-icon>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-12 bcontainer-login100-form-btn">
+                                                    <button type="submit"
+                                                        class="btn btn-outline-success pull-right">save
+                                                        changes</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="card project_widget">
+                                    <div class="header mt-2 pb-0">
+                                        <h6>Change Password</h6>
+                                    </div>
+                                    <div class="body">
+                                        <form class=""  [formGroup]="updatePasswordForm"
+                                            (ngSubmit)="onChangePasswordSubmit()">
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                    <mat-form-field class="example-full-width" appearance="outline">
+                                                        <mat-label>Enter Current Password</mat-label>
+                                                        <input matInput formControlName="opassword"
+                                                            type="password"
+                                                            required>
+                                                        <mat-icon matSuffix>account_circle</mat-icon>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                    <mat-form-field class="example-full-width" appearance="outline">
+                                                        <mat-label>Enter New Password</mat-label>
+                                                        <input matInput formControlName="npassword"
+                                                            type="password"
+                                                            required>
+                                                        <mat-icon matSuffix>account_circle</mat-icon>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-12 bcontainer-login100-form-btn">
+                                                    <button type="submit"
+                                                        class="btn btn-outline-success pull-right">Save
+                                                        Changes</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="card project_widget">
+                                    <div class="header mt-2 pb-0">
+                                        <h6>Request to Change Phone & Email</h6>
+                                    </div>
+                                    <div class="body">
+
+                                        <form class="">
+                                            <div class="row">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+
+                                                  <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Select</mat-label>
+                                                    <mat-select [(ngModel)]="req.subject" name="subject"
+                                                        id="subject" required>
+                                                        <mat-option [value]="'email'">
+                                                            Email
+                                                        </mat-option>
+                                                        <mat-option [value]="'phone'">
+                                                            Phone
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                    <mat-form-field class="example-full-width" appearance="outline">
+                                                        <mat-label>Current Password</mat-label>
+                                                        <input matInput [(ngModel)]="req.password" name="password"
+                                                            id="password" type="password" required>
+                                                        <mat-icon matSuffix>vpn_key</mat-icon>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                  <mat-form-field class="example-full-width" appearance="outline">
+                                                    <mat-label>Enter New Email or Phone Number</mat-label>
+                                                    <input matInput [(ngModel)]="req.new_details" name="new_details"
+                                                        id="new_details" required>
+                                                    <mat-icon matSuffix>stay_current_portrait</mat-icon>
+                                                </mat-form-field>
+                                                </div>
+                                                <div class="col-md-12 bcontainer-login100-form-btn">
+                                                    <button type="button" class="btn btn-outline-success pull-right"
+                                                        (click)="requestToChangeDetails()">Request Change</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="card project_widget">
+                                    <div class="header mt-2 pb-0">
+                                        <h6>Change Password</h6>
+                                    </div>
+                                    <div class="body">
+                                        <form class="" [formGroup]="profForm">
+                                            <div class="row">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                                                    <mat-form-field class="example-full-width" appearance="outline">
+                                                        <mat-label>Enter Current Password</mat-label>
+                                                        <input matInput name="password" type="password"
+                                                            [type]="hide ? 'password' : 'text'" required>
+                                                        <mat-icon matSuffix (click)="hide = !hide">
+                                                            {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                    <mat-form-field class="example-full-width" appearance="outline">
+                                                        <mat-label>Enter New Password</mat-label>
+                                                        <input matInput name="password" type="password"
+                                                            [type]="hide ? 'password' : 'text'" required>
+                                                        <mat-icon matSuffix (click)="hide = !hide">
+                                                            {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                                                    <mat-form-field class="example-full-width" appearance="outline">
+                                                        <mat-label>Repeat New Password</mat-label>
+                                                        <input matInput name="password" type="password"
+                                                            [type]="hide ? 'password' : 'text'" required>
+                                                        <mat-icon matSuffix (click)="hide = !hide">
+                                                            {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-12 bcontainer-login100-form-btn">
+                                                    <button type="button"
+                                                        class="btn btn-outline-success pull-right">Save
+                                                        Changes</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

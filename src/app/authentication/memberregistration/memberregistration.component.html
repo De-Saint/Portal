@@ -1,0 +1,130 @@
+<div class="limiter">
+    <div class="container-login100">
+        <form class="login100-form2" #signUpForm="ngForm" (ngSubmit)="(signUpForm.valid && onSubmit(signUpForm))">
+            <div class="login100-form-title">
+
+                <!-- Error alert !-->
+                <div class="col-lg-12 col-md-12">
+                    <div class="message-alert d-none" style="font-size: 15px;"></div>
+                </div>
+                <!-- End Error alert !-->
+
+                <img src="assets/images/logo1.png" alt="" class="mb-4" style="width: 60px; height: 60px;" />
+                <h4 style="font-size: 18px !important;">Create Account</h4>
+                <p style="font-size: 13px; color: #A9A9A9;">All fields are required</p>
+            </div>
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput name="first_name" #first_name="ngModel" type="text"
+                        [(ngModel)]="authService.selectedUser.first_name" required>
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 mb-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput name="last_name" #last_name="ngModel" type="text"
+                        [(ngModel)]="authService.selectedUser.last_name" required>
+                    <mat-icon matSuffix>account_box</mat-icon>
+                </mat-form-field>
+            </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>User Name</mat-label>
+                        <input matInput name="username" #username="ngModel" type="text"
+                            [(ngModel)]="authService.selectedUser.username" required>
+                        <mat-icon matSuffix>supervisor_account</mat-icon>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput name="email" #email="ngModel" type="text"
+                            [(ngModel)]="authService.selectedUser.email" required>
+                        <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput name="phone_number" #phone_number="ngModel" type="text"
+                            [(ngModel)]="authService.selectedUser.phone_number" required>
+                        <mat-icon matSuffix>phone_iphone</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Select Gender</mat-label>
+                        <mat-select name="gender" #gender="ngModel" type="text"
+                            [(ngModel)]="authService.selectedUser.gender" required>
+                            <mat-option [value]="'Male'">
+                                Male
+                            </mat-option>
+                            <mat-option [value]="'Female'">
+                                Female
+                            </mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>supervisor_account</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Choose a date (Date of Birth)</mat-label>
+                        <input matInput [matDatepicker]="picker" name="dob" #dob="ngModel" type="text"
+                            [(ngModel)]="authService.selectedUser.dob">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput name="password" #password="ngModel" type="text"
+                            [(ngModel)]="authService.selectedUser.password" [type]="hide ? 'password' : 'text'"
+                            required>
+                        <mat-icon matSuffix (click)="hide = !hide">
+                            {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Confirm Password</mat-label>
+                        <input matInput name="cpassword" #cpassword="ngModel" type="text"
+                            [(ngModel)]="authService.selectedUser.cpassword" [type]="hide ? 'password' : 'text'"
+                            required>
+                        <mat-icon matSuffix (click)="hide = !hide">
+                            {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="w-full p-b-20">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value=""> Accept Our Terms and Conditions.
+                        <span class="form-check-sign">
+                            <span class="check"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="container-login100-form-btn">
+                <button mat-flat-button color="primary" style="width: 300px;" class="" type="submit">
+                    Create Account
+                </button>
+            </div>
+            <div class="text-center p-t-15 p-b-20">
+                <div class="txt3">
+                    Already have an account <a routerLink="/authentication/signin">
+                        Sign in
+                    </a>
+                </div>
+                <div class="txt3 mt-1">
+                    For SMS Registration please text: reg email firstname lastname password to +12672024951
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

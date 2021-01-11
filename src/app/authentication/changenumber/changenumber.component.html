@@ -1,0 +1,38 @@
+<div class="limiter">
+  <div class="container-login100">
+    <form class="login100-form validate-form" [formGroup]="changeForm" (ngSubmit)="onSubmit()"
+      style="width: 500px !important; padding: 34px 35px !important;">
+      <div class="login100-form-title">
+        <!-- Error alert !-->
+        <div class="col-lg-12 col-md-12">
+          <div class="message-alert d-none" style="font-size: 15px;"></div>
+        </div>
+        <!-- End Error alert !-->
+        <img src="assets/images/logo1.png" alt="" class="mb-4" style="width: 60px; height: 60px;" />
+        <h4 class="mb-3" style="font-size: 18px !important;">Enter Code</h4>
+        <p class="font-15 mb-3">A code as been sent to your email address or phone number</p>
+      </div>
+      <div class="form-group mb-0">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Enter your code</mat-label>
+            <input matInput formControlName="code" required>
+            <mat-icon matSuffix>vpn_key</mat-icon>
+            <mat-error *ngIf="changeForm.get('code').hasError('required')">
+              Code is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="container-login100-form-btn" style="display: block !important;">
+        <button mat-flat-button color="primary" class="login100-form-btn" type="submit" (click)="onSubmit()">
+          Submit
+        </button>
+      </div>
+      <div class="text-center mt-4">
+        <p class="font-15 mb-0">Didn't Receive a Code?</p>
+        <button class="font-15 mb-0 btn btn-outline-primary btn-sm" (click)="onResend()">Resend</button>
+      </div>
+    </form>
+  </div>
+</div>
